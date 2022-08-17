@@ -31,7 +31,7 @@ class RegisterController extends Controller
         $user->last_name = $request->last_name;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = Hash::make($request->email);
+        $user->password = Hash::make($request->password);
 
         try {
             $user->save();
@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email|max:50',
-            'username' => 'required|string|min:4|max:15|unique:users,handle',
+            'username' => 'required|string|min:4|max:20|unique:users,username',
             'password' => 'required|min:8|max:30|string|confirmed',
         ]);
     }
